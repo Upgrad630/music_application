@@ -13,10 +13,22 @@ public class SongCatalog {
         this.albums = new ArrayList<>();
     }
 
+<<<<<<< HEAD
+    public List<Song> searchByTitle(String title){
+        List<Song> result = new ArrayList<>();
+        for (Song song : songs){
+            if(song.getTitle().equalsIgnoreCase(title)){
+                result.add(song);
+            }
+        }
+
+        return result;
+=======
     public List<Song> searchByTitle(String title) {
         return songs.stream()
                     .filter(song -> song.getTitle().equalsIgnoreCase(title))
                     .collect(Collectors.toList());
+>>>>>>> master
     }
 
     // Method to search for songs by artist
