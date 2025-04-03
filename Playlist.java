@@ -24,20 +24,27 @@ public class Playlist {
         SongNode newNode = new SongNode(song);
 
         SongNode current = head;
-        while(current.getNext() != null){
-            current = current.getNext();
-        }
 
-        current.setNext(newNode);
+        if(head == null){
+            head = newNode;
+        } else {
+            while(current.getNext() != null){
+                current = current.getNext();
+            }
+    
+            current.setNext(newNode);
+        }
 
         totalDuration += song.getDuration();
         numberOfSongs++;
     }
 
     public void removeSong(Song song){
-        songs.remove(song);
-        totalDuration -= song.getDuration();
-        numberOfSongs--;
+        if(songs.contains(song)){
+            songs.remove(song);
+            totalDuration -= song.getDuration();
+            numberOfSongs--;
+        }
     }
 
     // Method to get all songs on the playlist
