@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SongCatalog {
     private List<Song> songs;
@@ -13,23 +14,19 @@ public class SongCatalog {
         this.albums = new ArrayList<>();
     }
 
-<<<<<<< HEAD
-    public List<Song> searchByTitle(String title){
-        List<Song> result = new ArrayList<>();
-        for (Song song : songs){
-            if(song.getTitle().equalsIgnoreCase(title)){
-                result.add(song);
-            }
-        }
-
-        return result;
-=======
-    public List<Song> searchByTitle(String title) {
-        return songs.stream()
-                    .filter(song -> song.getTitle().equalsIgnoreCase(title))
-                    .collect(Collectors.toList());
->>>>>>> master
-    }
+    //To search songs containing title string but not just the exact match
+    public List<Song> searchByTitleContains(String title) {
+    return songs.stream()
+                .filter(song -> song.getTitle().toLowerCase().contains(title.toLowerCase())) //More flexible
+                .collect(Collectors.toList());
+     }
+    //  public List<Song> searchByTitle(String title) {
+    //     return songs.stream()
+    //                 .filter(song -> song.getTitle().equalsIgnoreCase(title))  // Compare titles, ignoring case
+    //                 .collect(Collectors.toList());
+    // } /*Use this method for exact match */
+    
+>>>>>>> 3a89dc9 (Added search by title method)
 
     // Method to search for songs by artist
     public List<Song> searchByArtist(String artistName) {
